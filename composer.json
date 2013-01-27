@@ -15,7 +15,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.3",
         "superdweebie/doctrine-extensions": "dev-master",
         "superdweebie/module-unit-tester": "dev-master",
         "superdweebie/zf2-extensions-module": "dev-master",
