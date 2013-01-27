@@ -1,5 +1,5 @@
 {
-    "name": "superdweebie/doctrine-extensions-module",
+    "name": "jhuet/sds-doctrine-extensions-module",
     "description": "Zend Framework 2 Module that provides Sds DoctrineExtensions functionality",
     "type": "library",
     "keywords": [
@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3",
-        "superdweebie/doctrine-extensions": "dev-master",
+        "jhuet/sds-doctrine-extensions": "dev-master",
         "superdweebie/module-unit-tester": "dev-master",
         "superdweebie/zf2-extensions-module": "dev-master",
         "doctrine/doctrine-mongo-odm-module": "dev-master"
