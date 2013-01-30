@@ -27,6 +27,6 @@ before_script:
   - mv config/test.application.config.php config/application.config.php
 
 script:
-  - ./vendor/bin/doctrine-module odm:generate:dojo
+  - ./vendor/bin/doctrine-module sds:generate:all
   - cd vendor/superdweebie/doctrine-extensions-module
   - phpunit

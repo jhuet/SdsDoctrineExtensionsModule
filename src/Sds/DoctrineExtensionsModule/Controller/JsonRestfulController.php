@@ -64,9 +64,9 @@ class JsonRestfulController extends AbstractJsonRestfulController
 
         if ($total == 0){
             $this->response->getHeaders()->addHeader(ContentRange::fromString("Content-Range: 0-0/0"));
-            return $this->model->setVariables([]);            
+            return $this->model->setVariables([]);
         }
-        
+
         $offset = $this->getOffset();
 
         $resultsQuery = $queryBuilder
@@ -83,7 +83,7 @@ class JsonRestfulController extends AbstractJsonRestfulController
         foreach($this->getSort() as $sort){
             $resultsQuery->sort($sort['field'], $sort['direction']);
         }
-       
+
         $resultsCursor = $resultsQuery
             ->eagerCursor(true)
             ->getQuery()
@@ -232,9 +232,8 @@ class JsonRestfulController extends AbstractJsonRestfulController
     protected function getSort(){
 
         foreach ($this->request->getQuery() as $key => $value){
-            if (substr($key, 0, 4) == 'sort' && isset($value)){
-                $sort = $value;
-                break;
+            if (substr($key, 0, 4) == 'sort' && ! isset($value)){
+                $sort = $key;
             }
         }
 
@@ -242,7 +241,7 @@ class JsonRestfulController extends AbstractJsonRestfulController
             return [];
         }
 
-        $sortFields = explode(',', str_replace(array('(',')'), '', $sort));
+        $sortFields = explode(',', str_replace(')', '', str_replace('sort(', '', $sort)));
         $return = [];
 
         foreach ($sortFields as $value)

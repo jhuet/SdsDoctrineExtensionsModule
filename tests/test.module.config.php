@@ -4,12 +4,12 @@ return [
     'sds' => [
         'doctrineExtensions' => [
             'extensionConfigs' => [
-                'Sds\DoctrineExtensions\AccessControl' => null,
-                'Sds\DoctrineExtensions\Accessor' => null,
-                'Sds\DoctrineExtensions\Annotation' => null,
-                'Sds\DoctrineExtensions\Audit' => null,
-                'Sds\DoctrineExtensions\Crypt' => null,
-                'Sds\DoctrineExtensions\DoNotHardDelete' => null,
+                'Sds\DoctrineExtensions\AccessControl' => true,
+                'Sds\DoctrineExtensions\Accessor' => true,
+                'Sds\DoctrineExtensions\Annotation' => true,
+                'Sds\DoctrineExtensions\Audit' => true,
+                'Sds\DoctrineExtensions\Crypt' => true,
+                'Sds\DoctrineExtensions\DoNotHardDelete' => true,
                 'Sds\DoctrineExtensions\Dojo' => [
                     'destPaths' => [
                         'all' => [
@@ -18,16 +18,16 @@ return [
                         ],
                     ],
                 ],
-                'Sds\DoctrineExtensions\Freeze' => null,
-                'Sds\DoctrineExtensions\Readonly' => null,
+                'Sds\DoctrineExtensions\Freeze' => true,
+                'Sds\DoctrineExtensions\Readonly' => true,
                 'Sds\DoctrineExtensions\Rest' => ['basePath' => 'http://test.com/api'],
-                'Sds\DoctrineExtensions\Serializer' => null,
-                'Sds\DoctrineExtensions\SoftDelete' => null,
-                'Sds\DoctrineExtensions\Stamp' => null,
-                'Sds\DoctrineExtensions\State' => null,
-                'Sds\DoctrineExtensions\Validator' => null,
-                'Sds\DoctrineExtensions\Workflow' => null,
-                'Sds\DoctrineExtensions\Zone' => null,
+                'Sds\DoctrineExtensions\Serializer' => true,
+                'Sds\DoctrineExtensions\SoftDelete' => true,
+                'Sds\DoctrineExtensions\Stamp' => true,
+                'Sds\DoctrineExtensions\State' => true,
+                'Sds\DoctrineExtensions\Validator' => true,
+                'Sds\DoctrineExtensions\Workflow' => true,
+                'Sds\DoctrineExtensions\Zone' => true,
             ],
         ],
     ],
@@ -73,16 +73,16 @@ return [
     'router' => [
         'routes' => [
             'Sds\Zf2ExtensionsModule\RestRoute' => [
-                'type' => 'Sds\Zf2ExtensionsModule\RestRoute',                
+                'type' => 'Sds\Zf2ExtensionsModule\RestRoute',
                 'options' => [
-                    'route' => '/api', 
+                    'route' => '/api',
                     'defaults' => [
                         'controller' => 'Sds\DoctrineExtensionsModule\Controller\JsonRestfulController'
-                    ],                       
+                    ],
                     'endpointToControllerMap' => [
                         'road' => 'Sds\DoctrineExtensionsModule\Test\TestAsset\RoadController'
                     ],
-                ],             
+                ],
             ],
         ],
     ],

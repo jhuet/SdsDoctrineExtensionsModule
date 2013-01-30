@@ -80,7 +80,7 @@ class Module
             !isset($extensionsConfig['extensionConfigs']['Sds\DoctrineExtensions\Rest']['basePath'])
         ){
             $request = $serviceLocator->get('request');
-            if (method_exists($request, 'getBaseUrl'){
+            if (method_exists($request, 'getBaseUrl')){
                 $extensionsConfig['extensionConfigs']['Sds\DoctrineExtensions\Rest']['basePath'] = $request->getBaseUrl() . $this->findRoute($config['router']['routes']);
             }
         }
