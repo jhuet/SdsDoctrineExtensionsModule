@@ -9,9 +9,11 @@ use Sds\DoctrineExtensions\Accessor\Accessor;
 use Sds\DoctrineExtensionsModule\Exception\InvalidArgumentException;
 use Sds\DoctrineExtensionsModule\Exception\DocumentNotFoundException;
 use Sds\DoctrineExtensionsModule\Options\JsonRestfulController as Options;
-use Sds\Zf2ExtensionsModule\Controller\AbstractJsonRestfulController;
+//use Sds\Zf2ExtensionsModule\Controller\AbstractJsonRestfulController;
 use Zend\Http\Header\ContentRange;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Mvc\Controller\AbstractRestfulController;
+use Zend\Mvc\MvcEvent;
 
 /**
  *
@@ -19,10 +21,26 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @version $Revision$
  * @author  Tim Roediger <superdweebie@gmail.com>
  */
-class JsonRestfulController extends AbstractJsonRestfulController
+class JsonRestfulController extends AbstractRestfulController
 {
 
+    protected $model;
+
+    protected $acceptCriteria = array(
+        'Zend\View\Model\JsonModel' => array(
+            'application/json',
+        ),
+        'Zend\View\Model\ViewModel' => array(
+            '*/*',
+        ),
+    );
+
     protected $options;
+
+    public function onDispatch(MvcEvent $e) {
+        $this->model = $this->acceptableViewModelSelector($this->acceptCriteria);
+        return parent::onDispatch($e);
+    }
 
     public function getOptions() {
         return $this->options;

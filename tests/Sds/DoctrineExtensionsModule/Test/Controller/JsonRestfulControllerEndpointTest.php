@@ -109,6 +109,7 @@ class JsonRestfulControllerEndpointTest extends AbstractControllerTest{
     public function testCreate(){
 
         $this->request->setMethod(Request::METHOD_POST);
+        $this->request->getHeaders()->addHeader(GenericHeader::fromString('Content-type: application/json'));
         $this->request->setContent('{"name": "forbiddenIsland", "type": "co-op"}');
 
         $result = $this->getController()->dispatch($this->request, $this->response);
@@ -123,6 +124,7 @@ class JsonRestfulControllerEndpointTest extends AbstractControllerTest{
         $this->setExpectedException('Sds\DoctrineExtensionsModule\Exception\InvalidArgumentException');
 
         $this->request->setMethod(Request::METHOD_POST);
+        $this->request->getHeaders()->addHeader(GenericHeader::fromString('Content-type: application/json'));
         $this->request->setContent('{"name": "missingType"}');
 
         $this->getController()->dispatch($this->request, $this->response);
@@ -133,6 +135,7 @@ class JsonRestfulControllerEndpointTest extends AbstractControllerTest{
         $this->routeMatch->setParam('id', 'forbiddenIsland');
 
         $this->request->setMethod(Request::METHOD_PUT);
+        $this->request->getHeaders()->addHeader(GenericHeader::fromString('Content-type: application/json'));
         $this->request->setContent('{"type": "board"}');
 
         $result = $this->getController()->dispatch($this->request, $this->response);
@@ -149,6 +152,7 @@ class JsonRestfulControllerEndpointTest extends AbstractControllerTest{
         $this->routeMatch->setParam('id', 'forbiddenIsland');
 
         $this->request->setMethod(Request::METHOD_PUT);
+        $this->request->getHeaders()->addHeader(GenericHeader::fromString('Content-type: application/json'));
         $this->request->setContent('{"type": null}');
 
         $this->getController()->dispatch($this->request, $this->response);
